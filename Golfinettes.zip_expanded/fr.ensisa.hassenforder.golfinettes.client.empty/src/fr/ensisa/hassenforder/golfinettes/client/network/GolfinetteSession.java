@@ -61,10 +61,13 @@ public class GolfinetteSession implements ISession {
 	}
 
 	private enum Decision {
-		SIGFOX_STD,
+		SIGFOX_STD, SIGFOX_ALM
 	}
 
 	private Decision decisionTaker (Event last) {
+		if (last.getUsage().getAlarm() <= 1) {
+			return Decision.SIGFOX_ALM;
+		}
 		return Decision.SIGFOX_STD;
 	}
 
