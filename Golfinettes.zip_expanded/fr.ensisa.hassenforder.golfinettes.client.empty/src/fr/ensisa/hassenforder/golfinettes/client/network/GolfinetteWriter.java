@@ -27,6 +27,10 @@ public class GolfinetteWriter extends BasicAbstractWriter {
 	public void createSigFoxStd(Event lastEvent) {
 		
 	}
+	
+	public void createSigFoxAlm(Event lastEvent) {
+		
+	}
 
 	@Override
 	public void send() {

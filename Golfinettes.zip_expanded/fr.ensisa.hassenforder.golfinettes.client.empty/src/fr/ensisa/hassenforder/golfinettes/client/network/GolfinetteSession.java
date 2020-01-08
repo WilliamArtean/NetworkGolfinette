@@ -77,6 +77,7 @@ public class GolfinetteSession implements ISession {
             GolfinetteWriter w = new GolfinetteWriter("localhost", Protocol.GOLFINETTES_SIGFOX_PORT);
             switch (decisionTaker(lastEvent)) {
             case SIGFOX_STD		: w.createSigFoxStd (lastEvent); break;
+            case SIGFOX_ALM		: w.createSigFoxAlm(lastEvent); break;
             }
             w.send();
 //        } catch (IOException e) {
