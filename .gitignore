@@ -1,0 +1,14 @@
+
+*.class
+*.xml
+*.png
+*.js
+*.dat
+*.ini
+*.properties
+*.setup
+*.log
+*.index
+*.prefs
+*.snap
+.metadata\*

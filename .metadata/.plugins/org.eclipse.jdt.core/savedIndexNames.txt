@@ -1,0 +1,22 @@
+INDEX VERSION 1.131+D:\Documents\Documents Personnels\Scolarité\ENSISA\Réseaux - 2A\TP\Sources et consignes-20200108\Golfinettes\.metadata\.plugins\org.eclipse.jdt.core
+171454625.index
+217201243.index
+3576478348.index
+361572395.index
+2745358934.index
+1450139719.index
+107352749.index
+1270787930.index
+1199799673.index
+4226879763.index
+1668907035.index
+1716564614.index
+1666636292.index
+1148158919.index
+2766357440.index
+3928631648.index
+323228533.index
+1963301834.index
+812786182.index
+2046610226.index
+1364987893.index
