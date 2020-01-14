@@ -55,10 +55,23 @@ public class GolfinetteSession implements ISession {
 		return null;
 	}
 
-	@Override
 	public boolean doWifi(List<Event> events) {
-		return false;
+		
+		try {
+		this.wifiReader = new WifiReader(this.wifi.getInputStream());
+		this.wifiWriter = new WifiWriter(this.wifi.getOutputStream());
+		wifiWriter.writeWifimsg(events);
+		wifiWriter.send();
+		
+		return true;
+		}
+		catch (IOException e) {
+			return false;
+		}
+		
+		
 	}
+
 
 	private enum Decision {
 		SIGFOX_STD,
