@@ -17,6 +17,7 @@ import fr.ensisa.hassenforder.network.BasicAbstractReader;
 
 public class WifiReader extends BasicAbstractReader {
 
+	private static final int MESSAGE_0 = 0;
 	private String versionCode;
 	private List<Event> events;
 	private Version version;
@@ -30,9 +31,13 @@ public class WifiReader extends BasicAbstractReader {
 	public void receive() {
 		type = readInt ();
 		switch (type) {
-		case 0 : break;
+		case Protocol.REQUEST_CONNECTION: 
+			this.type = Protocol.REPLY_ID;
+			break;
 		}
 	}
+
+	
 
 	public String getVersionCode() {
 		return versionCode;
