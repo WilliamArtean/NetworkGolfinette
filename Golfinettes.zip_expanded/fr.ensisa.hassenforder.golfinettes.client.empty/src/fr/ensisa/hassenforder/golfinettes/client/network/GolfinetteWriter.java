@@ -6,6 +6,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 import fr.ensisa.hassenforder.golfinettes.client.model.Event;
+import fr.ensisa.hassenforder.golfinettes.client.model.Usage.BorrowerEvent;
 import fr.ensisa.hassenforder.golfinettes.network.Protocol;
 import fr.ensisa.hassenforder.network.BasicAbstractWriter;
 
@@ -25,18 +26,32 @@ public class GolfinetteWriter extends BasicAbstractWriter {
 	}
 
 	public void createSigFoxStd(Event lastEvent) {
-		
+		//writeInt((int) lastEvent.getId());
+		writeAsByte(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getBattery().getTemperature());
+		writeAsByte(lastEvent.getBattery().getLoad());
+		writeAsByte(lastEvent.getBattery().getLoadingCurrent());
+		writeAsByte(lastEvent.getLocation().getTemperature());
+		writeAsByte(lastEvent.getLocation().getHumidity());
+		if (lastEvent.getUsage().getEvent().equals(BorrowerEvent.FREE)) {
+			writeBoolean(true);
+		} else {
+			writeBoolean(false);
+		}
 	}
 	
 	public void createSigFoxAlm(Event lastEvent) {
-		
+		//writeInt((int) lastEvent.getId());
 	}
 
 	@Override
 	public void send() {
-        byte[] message = baos.toByteArray();
+        
     	DatagramSocket socket = null;
         try {
+        	byte[] message = baos.toByteArray();
         	InetAddress target = InetAddress.getByName(host);
         	DatagramPacket packet = new DatagramPacket(message, message.length, target, port);
         	System.out.println("SIGFOX packet sent with : "+(message.length)+" bytes all inclusive");
