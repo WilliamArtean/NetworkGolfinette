@@ -26,10 +26,10 @@ public class GolfinetteWriter extends BasicAbstractWriter {
 	}
 
 	public void createSigFoxStd(Event lastEvent) {
-		//writeInt((int) lastEvent.getId());
-		writeAsByte(lastEvent.getUsage().getAlarm());
-		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
 		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
 		writeShort((short) lastEvent.getBattery().getTemperature());
 		writeAsByte(lastEvent.getBattery().getLoad());
 		writeAsByte(lastEvent.getBattery().getLoadingCurrent());
@@ -40,10 +40,96 @@ public class GolfinetteWriter extends BasicAbstractWriter {
 		} else {
 			writeBoolean(false);
 		}
+		writeLong(lastEvent.getTimestamp().getTime());
 	}
 	
-	public void createSigFoxAlm(Event lastEvent) {
-		//writeInt((int) lastEvent.getId());
+	public void createSigFoxAlmZI(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeAsByte(0);
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmExitZI(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeAsByte(0);
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmSpeed(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeAsByte(0);
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmMaxDist(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeAsByte(0);
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmClm(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeAsByte(lastEvent.getLocation().getTemperature());
+		writeAsByte(lastEvent.getLocation().getHumidity());
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmBattery(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeShort((short) lastEvent.getBattery().getTemperature());
+		writeAsByte(lastEvent.getBattery().getLoad());
+		writeAsByte(lastEvent.getBattery().getDischargeCurrent());
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmMaterial(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeShort((short) lastEvent.getBattery().getTemperature());
+		writeAsByte(lastEvent.getBattery().getLoad());
+		writeAsByte(lastEvent.getBattery().getDischargeCurrent());
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmLogiciel(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt(lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeShort((short) lastEvent.getBattery().getTemperature());
+		writeAsByte(lastEvent.getBattery().getLoad());
+		writeAsByte(lastEvent.getBattery().getDischargeCurrent());
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmClient(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt((int) lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeShort((short) lastEvent.getBattery().getTemperature());
+		writeAsByte(lastEvent.getBattery().getLoad());
+		writeAsByte(lastEvent.getBattery().getDischargeCurrent());
+		writeLong(lastEvent.getTimestamp().getTime());
+	}
+	public void createSigFoxAlmForbiddenBorrow(Event lastEvent) {
+		writeInt((int) lastEvent.getId());
+		writeInt((int) lastEvent.getUsage().getAlarm());
+		writeShort((short) lastEvent.getLocation().getLongitude());
+		writeShort((short) lastEvent.getLocation().getLatitude());
+		writeLong(lastEvent.getTimestamp().getTime());
 	}
 
 	@Override

@@ -61,12 +61,33 @@ public class GolfinetteSession implements ISession {
 	}
 
 	private enum Decision {
-		SIGFOX_STD, SIGFOX_ALM
+		SIGFOX_STD, SIGFOX_ALM_ZI, SIGFOX_ALM_EXITZI, SIGFOX_ALM_SPEED, SIGFOX_ALM_MAXDIST, SIGFOX_ALM_CLM, SIGFOX_ALM_BATT, SIGFOX_ALM_MAT, SIGFOX_ALM_LOG, SIGFOX_ALM_CLIENT, SIGFOX_ALM_FORBIDDENBORROW
 	}
 
 	private Decision decisionTaker (Event last) {
-		if (last.getUsage().getAlarm() <= 1) {
-			return Decision.SIGFOX_ALM;
+		switch (last.getUsage().getAlarm()) {
+		case 0:
+			return Decision.SIGFOX_STD;
+		case 1:
+			return Decision.SIGFOX_ALM_ZI;
+		case 2:
+			return Decision.SIGFOX_ALM_EXITZI;
+		case 3:
+			return Decision.SIGFOX_ALM_SPEED;
+		case 4:
+			return Decision.SIGFOX_ALM_MAXDIST;
+		case 5:
+			return Decision.SIGFOX_ALM_CLM;
+		case 6:
+			return Decision.SIGFOX_ALM_BATT;
+		case 7:
+			return Decision.SIGFOX_ALM_MAT;
+		case 8:
+			return Decision.SIGFOX_ALM_LOG;
+		case 9:
+			return Decision.SIGFOX_ALM_CLIENT;
+		case 10:
+			return Decision.SIGFOX_ALM_FORBIDDENBORROW;
 		}
 		return Decision.SIGFOX_STD;
 	}
@@ -77,7 +98,16 @@ public class GolfinetteSession implements ISession {
             GolfinetteWriter w = new GolfinetteWriter("localhost", Protocol.GOLFINETTES_SIGFOX_PORT);
             switch (decisionTaker(lastEvent)) {
             case SIGFOX_STD		: w.createSigFoxStd (lastEvent); break;
-            case SIGFOX_ALM		: w.createSigFoxAlm(lastEvent); break;
+            case SIGFOX_ALM_ZI		: w.createSigFoxAlmZI(lastEvent); break;
+            case SIGFOX_ALM_EXITZI		: w.createSigFoxAlmExitZI(lastEvent); break;
+            case SIGFOX_ALM_SPEED		: w.createSigFoxAlmSpeed(lastEvent); break;
+            case SIGFOX_ALM_MAXDIST		: w.createSigFoxAlmMaxDist(lastEvent); break;
+            case SIGFOX_ALM_CLM		: w.createSigFoxAlmClm(lastEvent); break;
+            case SIGFOX_ALM_BATT		: w.createSigFoxAlmBattery(lastEvent); break;
+            case SIGFOX_ALM_MAT		: w.createSigFoxAlmMaterial(lastEvent); break;
+            case SIGFOX_ALM_LOG		: w.createSigFoxAlmLogiciel(lastEvent); break;
+            case SIGFOX_ALM_CLIENT		: w.createSigFoxAlmClient(lastEvent); break;
+            case SIGFOX_ALM_FORBIDDENBORROW		: w.createSigFoxAlmForbiddenBorrow(lastEvent); break;
             }
             w.send();
 //        } catch (IOException e) {
