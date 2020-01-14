@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Golfinettes.zip_expanded/fr.ensisa.hassenforder.golfinettes.admin.empty/src"/>
+	<classpathentry kind="src" path="Golfinettes.zip_expanded/fr.ensisa.hassenforder.golfinettes.client.empty/src"/>
+	<classpathentry kind="src" path="Golfinettes.zip_expanded/fr.ensisa.hassenforder.golfinettes.common.empty/src"/>
+	<classpathentry kind="src" path="Golfinettes.zip_expanded/fr.ensisa.hassenforder.golfinettes.server.empty/src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
