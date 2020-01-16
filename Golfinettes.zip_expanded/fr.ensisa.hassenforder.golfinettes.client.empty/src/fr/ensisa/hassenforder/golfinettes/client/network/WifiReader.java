@@ -18,6 +18,7 @@ public class WifiReader extends BasicAbstractReader {
         type = readInt();
         version = null;
         switch (type) {
+        this.
         }
     }
 

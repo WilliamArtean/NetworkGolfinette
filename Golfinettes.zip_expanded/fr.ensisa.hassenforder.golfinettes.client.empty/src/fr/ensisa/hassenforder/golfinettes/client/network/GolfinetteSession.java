@@ -12,6 +12,7 @@ import fr.ensisa.hassenforder.golfinettes.network.Protocol;
 
 public class GolfinetteSession implements ISession {
 
+	//touche que reader, writer, session
     private Socket wifi;
 
     public GolfinetteSession() {

@@ -41,6 +41,14 @@ public class AdminSession implements ISession {
 
 	@Override
 	public String doSoftwareUpdate(Version version) {
+		try {
+			AdminWriter writer = new AdminWriter(this.wifi.getOutputStream());
+			writer.sendSoftwareUpdate(version);
+			return version.getFileContent1();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
